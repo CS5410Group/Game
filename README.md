@@ -74,3 +74,9 @@
 - Easter eggs
 - Foreground Elements
     - Time consuming but more immersive environments
+
+### Brainstorm:
+![Brainstorm Whiteboard](./images/GameDevBrainstorm.jpg)
+
+
+
