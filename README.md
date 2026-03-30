@@ -78,5 +78,5 @@
 ### Brainstorm:
 ![Brainstorm Whiteboard](./images/GameDevBrainstorm.jpg)
 
-
-
+### Onrunning TODO
+- [ ] Player State subclass
