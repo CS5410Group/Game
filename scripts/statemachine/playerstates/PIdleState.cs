@@ -19,6 +19,8 @@ public partial class PIdleState : PlayerState
     {
 		HandleGravity(delta);
 
+		float input_dir = Input.GetAxis("left", "right");
+
 		// Changing states
 		if (!player.IsOnFloor())
 		{
@@ -28,7 +30,7 @@ public partial class PIdleState : PlayerState
 		{
 			finished(JUMPING);
 		}
-		else if (Input.IsActionJustPressed("left") || Input.IsActionJustPressed("right"))
+		else if (input_dir != 0.0)
 		{
 			finished(MOVING);
 		}
