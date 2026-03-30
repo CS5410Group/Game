@@ -58,7 +58,7 @@ public partial class StateMachine : Node
 	// TODO: pass data over if needed, I'm lazy rn
     public void OnStateFinish(string next_state) {
 		if (!HasNode(next_state)) {
-			GD.PrintErr("You fucked up, you gotta have ", next_state, " in the tree to move it it");
+			GD.PrintErr("You fucked up, you gotta have ", next_state, " in the tree to move it move it");
 			return;
 		}
 		else if (GetNode(next_state) is not State)
