@@ -51,3 +51,6 @@
 - More areas
 - End boss
 - Easter eggs
+
+### Onrunning TODO
+- [ ] Player State subclass
