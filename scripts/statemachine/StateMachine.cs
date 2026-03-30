@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 [GlobalClass]
