@@ -3,7 +3,19 @@
 [ext_resource type="Script" uid="uid://dtbfrnq5nh83i" path="res://scripts/MainMenu.cs" id="1_l6cm7"]
 [ext_resource type="PackedScene" uid="uid://ctx0skvdfl87m" path="res://scenes/player.tscn" id="2_ekxnf"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekxnf"]
+size = Vector2(322, 20)
+
 [node name="MainMenu" type="Node2D" unique_id=833664962]
 script = ExtResource("1_l6cm7")
 
 [node name="Player" parent="." unique_id=1875659839 instance=ExtResource("2_ekxnf")]
+position = Vector2(1, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=970174178]
+position = Vector2(-36, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1368330185]
+shape = SubResource("RectangleShape2D_ekxnf")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=519234565]
