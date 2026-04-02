@@ -1,18 +1,24 @@
 [gd_scene format=3 uid="uid://ctx0skvdfl87m"]
 
 [ext_resource type="Texture2D" uid="uid://oqyqonwabrxt" path="res://icon.svg" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://c0ngamdaj5253" path="res://scripts/Player.cs" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://ckb5thenyscma" path="res://scripts/statemachine/StateMachine.cs" id="2_g2els"]
-[ext_resource type="Script" uid="uid://dxoj0vyj5cyt6" path="res://scripts/statemachine/PMoveState.cs" id="3_qhqgy"]
-[ext_resource type="Script" uid="uid://bv10i3ju0w3rb" path="res://scripts/statemachine/PJumpState.cs" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://dxoj0vyj5cyt6" path="res://scripts/statemachine/playerstates/PMoveState.cs" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://bv10i3ju0w3rb" path="res://scripts/statemachine/playerstates/PJumpState.cs" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://bm5k1573hjt2i" path="res://scripts/statemachine/playerstates/PIdleState.cs" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://plovgo0sbsey" path="res://scripts/statemachine/playerstates/PFallingState.cs" id="7_fjrip"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
-height = 46.0
+radius = 16.0
+height = 48.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1875659839]
+[node name="Player" type="CharacterBody2D" unique_id=1875659839 node_paths=PackedStringArray("Gun")]
+script = ExtResource("1_qlg0r")
+Gun = NodePath("GunPivot")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1832083286]
-position = Vector2(0, 4.7683716e-07)
-scale = Vector2(0.15625, 0.359375)
+position = Vector2(-2.842171e-14, 4.7683716e-07)
+scale = Vector2(0.24999999, 0.37499997)
 texture = ExtResource("1_3vyb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=524893701]
@@ -20,8 +26,12 @@ shape = SubResource("CapsuleShape2D_g2els")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1776485307 node_paths=PackedStringArray("initialState")]
 script = ExtResource("2_g2els")
-initialState = NodePath("PMoveState")
+initialState = NodePath("PIdleState")
 metadata/_custom_type_script = "uid://ckb5thenyscma"
+
+[node name="PIdleState" type="Node" parent="StateMachine" unique_id=1059222746]
+script = ExtResource("6_tuyoq")
+metadata/_custom_type_script = "uid://bm5k1573hjt2i"
 
 [node name="PMoveState" type="Node" parent="StateMachine" unique_id=1660221631]
 script = ExtResource("3_qhqgy")
@@ -31,8 +41,11 @@ metadata/_custom_type_script = "uid://dxoj0vyj5cyt6"
 script = ExtResource("4_dqkch")
 metadata/_custom_type_script = "uid://bv10i3ju0w3rb"
 
+[node name="PFallingState" type="Node" parent="StateMachine" unique_id=889201328]
+script = ExtResource("7_fjrip")
+metadata/_custom_type_script = "uid://plovgo0sbsey"
+
 [node name="GunPivot" type="Node2D" parent="." unique_id=719573001]
-position = Vector2(-2, -4)
 
 [node name="Gun" type="Sprite2D" parent="GunPivot" unique_id=640644064]
 position = Vector2(15.75, 5.684342e-14)
@@ -43,3 +56,5 @@ texture = ExtResource("1_3vyb7")
 position = Vector2(21.917809, 0)
 scale = Vector2(0.10958904, 1.2857141)
 texture = ExtResource("1_3vyb7")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1703716581]
