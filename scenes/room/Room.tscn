@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dn1g2s3f5sxqh"]
+
+[ext_resource type="Script" uid="uid://bfh338jpmqf43" path="res://scripts/room/Room.cs" id="1_rb6ci"]
+[ext_resource type="Texture2D" uid="uid://oqyqonwabrxt" path="res://icon.svg" id="2_ngsr2"]
+[ext_resource type="PackedScene" uid="uid://ctx0skvdfl87m" path="res://scenes/player.tscn" id="2_qhgoc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhgoc"]
+size = Vector2(525, 383)
+
+[node name="Room" type="Node2D" unique_id=1574444025]
+script = ExtResource("1_rb6ci")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1336318241]
+position = Vector2(-3, 110)
+scale = Vector2(4.140625, 1)
+texture = ExtResource("2_ngsr2")
+
+[node name="ForeGround" type="TileMapLayer" parent="." unique_id=956085370]
+
+[node name="Player" parent="." unique_id=1875659839 instance=ExtResource("2_qhgoc")]
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=2006944337]
+
+[node name="BackGround" type="TileMapLayer" parent="." unique_id=719215590]
+
+[node name="Camera" type="Camera2D" parent="." unique_id=997556292]
+position_smoothing_enabled = true
+
+[node name="CameraBounds" type="Area2D" parent="." unique_id=1492500908]
+collision_mask = 129
+
+[node name="CameraBoundsShape" type="CollisionShape2D" parent="CameraBounds" unique_id=699465573]
+position = Vector2(-4.5, -62.5)
+shape = SubResource("RectangleShape2D_qhgoc")
