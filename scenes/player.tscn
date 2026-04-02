@@ -9,14 +9,16 @@
 [ext_resource type="Script" uid="uid://plovgo0sbsey" path="res://scripts/statemachine/playerstates/PFallingState.cs" id="7_fjrip"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
-height = 46.0
+radius = 16.0
+height = 48.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1875659839]
+[node name="Player" type="CharacterBody2D" unique_id=1875659839 node_paths=PackedStringArray("Gun")]
 script = ExtResource("1_qlg0r")
+Gun = NodePath("GunPivot")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1832083286]
-position = Vector2(0, 4.7683716e-07)
-scale = Vector2(0.15625, 0.359375)
+position = Vector2(-2.842171e-14, 4.7683716e-07)
+scale = Vector2(0.24999999, 0.37499997)
 texture = ExtResource("1_3vyb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=524893701]
@@ -44,7 +46,6 @@ script = ExtResource("7_fjrip")
 metadata/_custom_type_script = "uid://plovgo0sbsey"
 
 [node name="GunPivot" type="Node2D" parent="." unique_id=719573001]
-position = Vector2(-2, -4)
 
 [node name="Gun" type="Sprite2D" parent="GunPivot" unique_id=640644064]
 position = Vector2(15.75, 5.684342e-14)
