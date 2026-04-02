@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b8y3hut68b5b2"]
+
+[ext_resource type="Script" uid="uid://cmh34t7p2yctf" path="res://scripts/TestPlayer.cs" id="1_48cbw"]
+[ext_resource type="PackedScene" uid="uid://dlv5uhcau1cto" path="res://scenes/child_1.tscn" id="2_hb7ax"]
+[ext_resource type="PackedScene" uid="uid://dgutmm1yvm5jr" path="res://scenes/child_2.tscn" id="3_mpjq4"]
+[ext_resource type="PackedScene" uid="uid://diurolnq6oiaq" path="res://scenes/sprite_2d.tscn" id="4_hb7ax"]
+
+[node name="TestPlayer" type="Node2D" unique_id=40576981]
+script = ExtResource("1_48cbw")
+
+[node name="Child1" parent="." unique_id=797497223 instance=ExtResource("2_hb7ax")]
+
+[node name="Child2" parent="." unique_id=1002377190 instance=ExtResource("3_mpjq4")]
+
+[node name="Sprite2D" parent="." unique_id=33797570 instance=ExtResource("4_hb7ax")]
