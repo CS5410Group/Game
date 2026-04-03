@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtbfrnq5nh83i" path="res://scripts/MainMenu.cs" id="1_l6cm7"]
 [ext_resource type="PackedScene" uid="uid://ctx0skvdfl87m" path="res://scenes/player.tscn" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://bmb5k847lrqqu" path="res://assets/tempsmile.png" id="3_bqqt6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekxnf"]
 size = Vector2(322, 20)
@@ -19,3 +20,7 @@ position = Vector2(-36, 80)
 shape = SubResource("RectangleShape2D_ekxnf")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=519234565]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1376446252]
+position = Vector2(-58.59999, -29.700012)
+texture = ExtResource("3_bqqt6")

@@ -2,24 +2,31 @@ using Godot;
 
 public partial class SaveController : Node2D
 {
+	// Save controller to manage saving objects to a json file, and manage loads.
+	// Currently only built to take in a single node, however godot.collections may be useful for groups.
+
 	public override void _Ready()
 	{
 		
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+
 	public void SaveFiles(Node node)
 	{
 		using var saveFile = FileAccess.Open("user://savegame.save", FileAccess.ModeFlags.Write);
-		if(node is TestPlayer player)
+		//TODO: add loop here so that the save data is more general, so a List of objects to be saved may be passed.
+		if(node is Player player)
 		{	
 		var info = player.Save();
 		var jsonString = Json.Stringify(info);
 		saveFile.StoreLine(jsonString);
 		}
 	}
-	public void LoadFiles(Node node)
+	//Perhaps have this return a collection of Nodes for relative node relations.
+	public void LoadFiles()
 	{	
+		//rn this is just to clear the current player instance to show saving/loading.
+		// Todo: set up this part of load to reload both player and level states more gracefully.
 		var main = GetTree().Root.GetNode("MainMenu");
 		if (main == null)
 		{
@@ -28,7 +35,7 @@ public partial class SaveController : Node2D
 		var children = main.GetChildren();
 		foreach (Node child in children)
 		{
-			if(child is TestPlayer player)
+			if(child is Player player)
 			{
 			player.QueueFree();
 			}
@@ -37,7 +44,7 @@ public partial class SaveController : Node2D
 		{
 			return;
 		}
-
+		//loop is useful in case of multiple objects saved within json; not useful atm.
 		using var saveFile = FileAccess.Open("user://savegame.save", FileAccess.ModeFlags.Read);
 		while (saveFile.GetPosition() < saveFile.GetLength())
 		{
@@ -55,6 +62,7 @@ public partial class SaveController : Node2D
 
 			var newObjectScene = GD.Load<PackedScene>(nodeData["Filename"].ToString());
 			var newObject = newObjectScene.Instantiate<Node>();
+			// add children, may not be used due to godots innate saving.
 			// foreach(string child in (Godot.Collections.Array)nodeData["Children"])
 			// {
 			// 	var newChildScene = GD.Load<PackedScene>(child);
@@ -68,6 +76,10 @@ public partial class SaveController : Node2D
 			// }
 			GetNode(nodeData["Parent"].ToString()).AddChild(newObject);
 			newObject.Set(Node2D.PropertyName.Position, new Vector2((float)nodeData["PosX"], (float) nodeData["PosY"]));
+			newObject.Set(Name, nodeData["Name"]);
+			// Possible to increment and relatively change public node data
+			// This could be useful for tracking multiple saves/Keeping track of most recent or otherwise
+			// newObject.Set(Player.PropertyName.JumpVelocity, (float) nodeData["JumpVelocity"] + 100f);
 		}
 	}
 }

@@ -26,26 +26,16 @@ public partial class TestPlayer : Node2D
 		}
 
 	}
-	public Godot.Collections.Array<string> getChild()
-	{
-		var list = GetChildren();
-		Godot.Collections.Array<string> children = [];
-		foreach(Node child in list)
-		{
-			children.Add(child.SceneFilePath);	
-		}
-		return children;
-	}
+
 	public Godot.Collections.Dictionary<string, Variant> Save()
 	{
-		
 		
 		return new Godot.Collections.Dictionary<string, Variant>()
 		{
 		{"Filename", SceneFilePath},
 		{"PosX", Position.X},
 		{"PosY", Position.Y},
-		{"Children", getChild()},
+		{"Children", GetChildren()},
 		{"Parent", GetParent().GetPath()},
 		};
 
