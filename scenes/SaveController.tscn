@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cd35hxdymedt4"]
+
+[ext_resource type="Script" uid="uid://y3haelladqlu" path="res://scripts/SaveController.cs" id="1_b8aq6"]
+
+[node name="SaveController" type="Node2D" unique_id=1664206369]
+script = ExtResource("1_b8aq6")
