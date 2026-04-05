@@ -35,4 +35,9 @@ public partial class PIdleState : PlayerState
 			finished(MOVING);
 		}
     }
+
+    public override void HandleInput(InputEvent @event)
+    {
+		this.HandleAiming(@event);
+    }
 }

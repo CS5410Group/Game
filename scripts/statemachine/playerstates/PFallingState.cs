@@ -27,4 +27,9 @@ public partial class PFallingState : PlayerState
             }
         }
     }
+    
+    public override void HandleInput(InputEvent @event)
+    {
+		this.HandleAiming(@event);
+    }
 }

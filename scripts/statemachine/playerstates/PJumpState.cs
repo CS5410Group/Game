@@ -22,4 +22,9 @@ public partial class PJumpState : PlayerState
 			finished(FALLING);
 		}
     }
+	
+    public override void HandleInput(InputEvent @event)
+    {
+		this.HandleAiming(@event);
+    }
 }

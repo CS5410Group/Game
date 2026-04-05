@@ -30,4 +30,9 @@ public partial class PMoveState : PlayerState
 			finished(IDLE);
 		}
     }
+	
+    public override void HandleInput(InputEvent @event)
+    {
+		this.HandleAiming(@event);
+    }
 }

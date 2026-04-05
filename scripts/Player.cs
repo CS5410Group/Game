@@ -13,12 +13,6 @@ public partial class Player : CharacterBody2D
 	[Export]
 	public Node2D Gun = null;
 
-	// TODO: Move this from here to somewhere better (probably into the states)
-	public override void _Input(InputEvent @event)
-	{
-		if (@event is InputEventMouseMotion eventMouseMotion)
-		{
-			Gun.LookAt(GetGlobalMousePosition());
-		}
-	}
+	// Used to determine where the gun points
+	public Vector2 aim_point = Vector2.Zero;
 }
