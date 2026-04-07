@@ -9,10 +9,11 @@ public partial class MainMenu : Node2D
 	private SaveController save;
 	public override void _Ready()
 	{
-		GD.Print("AA");
 		player = GetNode<Player>("Player");
 		save = GetTree().Root.GetNode<SaveController>("SaveController");
-		save.SaveFiles(player);
+		save.SaveLevel("Test", [1,2,3]);
+		GD.Print(save.LoadLevel("Test"));
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,11 +29,11 @@ public partial class MainMenu : Node2D
 					player = newPlayer;
 				}
 			}			
-			save.SaveFiles(player);
+			save.SavePlayer(player);
 		}
 		if (Input.IsActionJustPressed("ui_cancel"))
 		{
-			save.LoadFiles();
+			save.LoadPlayer();
 			player = GetNode<Player>("Player");
 		}
 		

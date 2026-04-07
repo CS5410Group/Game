@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Player : CharacterBody2D
+public partial class Player : CharacterBody2D, Save
 {
 	[Export]
 	public float Speed = 500.0f;

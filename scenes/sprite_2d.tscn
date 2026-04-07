@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://diurolnq6oiaq"]
-
-[ext_resource type="Texture2D" uid="uid://bmb5k847lrqqu" path="res://assets/tempsmile.png" id="1_k71pb"]
-
-[node name="Sprite2D" type="Sprite2D" unique_id=33797570]
-texture = ExtResource("1_k71pb")

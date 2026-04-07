@@ -1,4 +1,0 @@
-[gd_scene format=3 uid="uid://dlv5uhcau1cto"]
-
-[node name="Child1" type="Label" unique_id=797497223]
-text = "Before Save"
