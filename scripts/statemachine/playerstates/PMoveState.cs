@@ -12,8 +12,10 @@ public partial class PMoveState : PlayerState
 
     public override void OnPhysicsUpdate(double delta)
     {
+		// Handle actual movement
 		HandleMovement(delta);
-
+		
+		// Get input direction for left/right movement for state stuff
 		float input_dir = Input.GetAxis("left", "right");
 
 		if (!player.IsOnFloor())
