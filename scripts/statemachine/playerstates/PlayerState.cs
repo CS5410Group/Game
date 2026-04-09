@@ -36,7 +36,6 @@ public partial class PlayerState : State
 
 	// General function to handle player movement
 	// Could also pass a speed if we want to slow the player down or speed them up
-	// Not sure if this is much better than doing it repeatidly through all the states
 	protected void HandleMovement(double delta)
 	{
 		// Get the current player velocity
@@ -55,14 +54,15 @@ public partial class PlayerState : State
 	{
 		// Get the input direction from the pointing inputs
 		Vector2 input_dir = Input.GetVector("point_left", "point_right", "point_up", "point_down");
+		Vector2 dead_zone = new(0.2f, 0.2f);
 
 		// Get the aim point, either from mouse or from the input_dir
         if (@event is InputEventMouseMotion)
 		{
 			player.aim_point = player.GetGlobalMousePosition();
-			GD.Print("Aim Position: ", player.aim_point);
 		}
-		else if (input_dir != Vector2.Zero) {
+		// Check if the input_dir is greater than the deadzone, if so set that to the aim direction
+		else if (Math.Abs(input_dir.X) >= dead_zone.X || Math.Abs(input_dir.Y) >= dead_zone.Y) {
 			player.aim_point = input_dir + player.Position;
 		}
 		else {
