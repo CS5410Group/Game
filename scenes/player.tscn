@@ -13,6 +13,7 @@ radius = 16.0
 height = 48.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1875659839 node_paths=PackedStringArray("Gun", "CoyoteTime")]
+floor_snap_length = 6.4
 script = ExtResource("1_qlg0r")
 Gun = NodePath("GunPivot")
 CoyoteTime = NodePath("CoyoteTime")
