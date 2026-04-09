@@ -12,9 +12,11 @@
 radius = 16.0
 height = 48.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1875659839 node_paths=PackedStringArray("Gun")]
+[node name="Player" type="CharacterBody2D" unique_id=1875659839 node_paths=PackedStringArray("Gun", "CoyoteTime")]
+floor_snap_length = 4.0
 script = ExtResource("1_qlg0r")
 Gun = NodePath("GunPivot")
+CoyoteTime = NodePath("CoyoteTime")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1832083286]
 position = Vector2(-2.842171e-14, 4.7683716e-07)
@@ -58,3 +60,6 @@ scale = Vector2(0.10958904, 1.2857141)
 texture = ExtResource("1_3vyb7")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1703716581]
+
+[node name="CoyoteTime" type="Timer" parent="." unique_id=2129363477]
+one_shot = true
