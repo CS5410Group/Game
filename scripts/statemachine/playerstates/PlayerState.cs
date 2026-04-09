@@ -54,7 +54,7 @@ public partial class PlayerState : State
 	{
 		// Get the input direction from the pointing inputs
 		Vector2 input_dir = Input.GetVector("point_left", "point_right", "point_up", "point_down");
-		Vector2 dead_zone = new(0.2f, 0.2f);
+		Vector2 dead_zone = new(0.5f, 0.5f);
 
 		// Get the aim point, either from mouse or from the input_dir
         if (@event is InputEventMouseMotion)
