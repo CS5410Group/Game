@@ -9,11 +9,20 @@ public partial class PFallingState : PlayerState
     {
         DebugEnter(prev_state);
         // Play falling animation here
+        player.CoyoteTime.Start();
     }
 
     public override void OnPhysicsUpdate(double delta)
     {
         HandleMovement(delta);
+
+        if (player.coyote) {
+            if (Input.IsActionJustPressed("jump"))
+            {
+                GD.Print("JUMPING FROM FALLING");
+                finished(JUMPING);
+            }
+        }
 
         if (player.IsOnFloor())
         {
@@ -26,5 +35,15 @@ public partial class PFallingState : PlayerState
                 finished(MOVING);
             }
         }
+    }
+    
+    public override void HandleInput(InputEvent @event)
+    {
+		this.HandleAiming(@event);
+    }
+
+    public override void OnExit()
+    {
+        player.coyote = true;
     }
 }
