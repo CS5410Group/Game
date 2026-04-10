@@ -56,5 +56,3 @@ texture = ExtResource("1_3vyb7")
 position = Vector2(21.917809, 0)
 scale = Vector2(0.10958904, 1.2857141)
 texture = ExtResource("1_3vyb7")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1703716581]
