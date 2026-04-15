@@ -1,17 +1,11 @@
 [gd_scene format=4 uid="uid://dn1g2s3f5sxqh"]
 
 [ext_resource type="Script" uid="uid://bfh338jpmqf43" path="res://scripts/room/Room.cs" id="1_rb6ci"]
-[ext_resource type="Texture2D" uid="uid://oqyqonwabrxt" path="res://icon.svg" id="2_ngsr2"]
 [ext_resource type="PackedScene" uid="uid://ctx0skvdfl87m" path="res://scenes/player.tscn" id="2_qhgoc"]
 
 [node name="Room" type="Node2D" unique_id=1574444025]
 script = ExtResource("1_rb6ci")
 CameraBounds = Rect2i(-10, 10, 10, 10)
-
-[node name="Icon" type="Sprite2D" parent="." unique_id=1336318241]
-position = Vector2(22, 813)
-scale = Vector2(4.140625, 1)
-texture = ExtResource("2_ngsr2")
 
 [node name="ForeGround" type="TileMapLayer" parent="." unique_id=956085370]
 
