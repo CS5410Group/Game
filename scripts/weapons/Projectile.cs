@@ -12,8 +12,9 @@ public partial class Projectile : Area2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		this.AreaEntered += HitThing;
+		this.BodyEntered += HitThing;
 		timeout.Timeout += BulletTimeout;
+		timeout.Start();
 	}
 
     public override void _PhysicsProcess(double delta)
