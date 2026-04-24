@@ -11,10 +11,13 @@ public partial class Player : CharacterBody2D, Save
 	public float Gravity = 4000.0f;
 
 	[Export]
-	public Node2D Gun = null;
+	public PGun Gun = null;
 
 	[Export]
 	public Timer CoyoteTime;
+
+	[Export]
+	public AnimatedSprite2D Character;
 
 	[Export]
 	public int CoyoteFrames = 6;

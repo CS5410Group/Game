@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dinkxdixjbp2w"]
+
+[ext_resource type="Texture2D" uid="uid://oqyqonwabrxt" path="res://icon.svg" id="1_2one0"]
+[ext_resource type="Script" uid="uid://be3yvxth6qpcy" path="res://scripts/weapons/PGun.cs" id="1_wjk2r"]
+
+[node name="Gun" type="Node2D" unique_id=804117568 node_paths=PackedStringArray("projectile_spawn")]
+script = ExtResource("1_wjk2r")
+projectile_spawn = NodePath("BulletSpawn")
+
+[node name="Barrel" type="Sprite2D" parent="." unique_id=190272795]
+position = Vector2(7.75, 5.684342e-14)
+scale = Vector2(0.16015624, 0.0546875)
+texture = ExtResource("1_2one0")
+
+[node name="Thing" type="Sprite2D" parent="Barrel" unique_id=1960743785]
+position = Vector2(21.917809, 0)
+scale = Vector2(0.10958904, 1.2857141)
+texture = ExtResource("1_2one0")
+
+[node name="BulletSpawn" type="Node2D" parent="." unique_id=537244817]
+position = Vector2(20, 0)

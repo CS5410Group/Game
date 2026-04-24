@@ -8,13 +8,15 @@ public partial class PFallingState : PlayerState
     public override void OnEnter(string prev_state)
     {
         DebugEnter(prev_state);
-        // Play falling animation here
         player.CoyoteTime.Start();
+        // Play falling animation here
+        player.Character.Play("Jump");
     }
 
     public override void OnPhysicsUpdate(double delta)
     {
         HandleMovement(delta);
+		HandleShooting();
 
         if (player.coyote) {
             if (Input.IsActionJustPressed("jump"))

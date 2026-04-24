@@ -14,6 +14,7 @@ public partial class PMoveState : PlayerState
     {
 		// Handle actual movement
 		HandleMovement(delta);
+		HandleShooting();
 		
 		// Get input direction for left/right movement for state stuff
 		float input_dir = Input.GetAxis("left", "right");
@@ -30,6 +31,17 @@ public partial class PMoveState : PlayerState
 		else if (input_dir == 0.0)
 		{
 			finished(IDLE);
+		}
+		else {
+			if (input_dir > 0) {
+				player.Character.FlipH = false;
+				player.Character.Play("Walk");
+			}
+			else {
+				player.Character.FlipH = true;
+				player.Character.Play("Walk");
+			}
+
 		}
     }
 	

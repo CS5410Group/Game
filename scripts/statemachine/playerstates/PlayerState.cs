@@ -26,6 +26,13 @@ public partial class PlayerState : State
 		GD.Print("Entered ", this.Name, " from ", prev_state);
 	}
 
+	// Handle shooting
+	protected void HandleShooting() {
+		if (Input.IsActionJustPressed("shoot")) {
+			player.Gun.FireGun();
+		}
+	}
+
 	// Just handle gravity
 	protected void HandleGravity(double delta) {
 		Vector2 new_vel = Vector2.Zero;
@@ -57,16 +64,13 @@ public partial class PlayerState : State
 		Vector2 dead_zone = new(0.5f, 0.5f);
 
 		// Get the aim point, either from mouse or from the input_dir
-        if (@event is InputEventMouseMotion)
+        if (@event is InputEventMouseMotion or InputEventMouseButton)
 		{
 			player.aim_point = player.GetGlobalMousePosition();
 		}
 		// Check if the input_dir is greater than the deadzone, if so set that to the aim direction
 		else if (Math.Abs(input_dir.X) >= dead_zone.X || Math.Abs(input_dir.Y) >= dead_zone.Y) {
 			player.aim_point = input_dir + player.Position;
-		}
-		else {
-			player.aim_point = player.Position;
 		}
 
 		// Actually apply the pointing
