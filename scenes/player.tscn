@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bv10i3ju0w3rb" path="res://scripts/statemachine/playerstates/PJumpState.cs" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://bm5k1573hjt2i" path="res://scripts/statemachine/playerstates/PIdleState.cs" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://plovgo0sbsey" path="res://scripts/statemachine/playerstates/PFallingState.cs" id="7_fjrip"]
+[ext_resource type="Script" uid="uid://cw68ogb07g20l" path="res://scripts/statemachine/playerstates/PDoubleJumpState.cs" id="8_smehm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
 radius = 16.0
@@ -46,6 +47,9 @@ metadata/_custom_type_script = "uid://bv10i3ju0w3rb"
 [node name="PFallingState" type="Node" parent="StateMachine" unique_id=889201328]
 script = ExtResource("7_fjrip")
 metadata/_custom_type_script = "uid://plovgo0sbsey"
+
+[node name="PDoubleJumpState" type="Node" parent="StateMachine" unique_id=938629588]
+script = ExtResource("8_smehm")
 
 [node name="GunPivot" type="Node2D" parent="." unique_id=719573001]
 

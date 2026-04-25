@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bwvoa8yj3b8u7"]
+
+[ext_resource type="Script" uid="uid://cllkjgtflnd0q" path="res://scripts/Interactable.cs" id="1_0iwdk"]
+[ext_resource type="Texture2D" uid="uid://bmb5k847lrqqu" path="res://assets/tempsmile.png" id="1_c6f01"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0iwdk"]
+radius = 90.199776
+
+[node name="Interactable" type="Node2D" unique_id=1805940178]
+script = ExtResource("1_0iwdk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1464787012]
+texture = ExtResource("1_c6f01")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1516402718]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1776754724]
+shape = SubResource("CircleShape2D_0iwdk")
+
+[node name="Label" type="Label" parent="." unique_id=1160276044]
+visible = false
+offset_left = -45.0
+offset_top = -57.0
+offset_right = 43.0
+offset_bottom = -34.0
+text = "TEST LABEL"
