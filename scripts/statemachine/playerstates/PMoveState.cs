@@ -14,6 +14,7 @@ public partial class PMoveState : PlayerState
     {
 		// Handle actual movement
 		HandleMovement(delta);
+		HandleShooting();
 		
 		// Get input direction for left/right movement for state stuff
 		float input_dir = Input.GetAxis("left", "right");

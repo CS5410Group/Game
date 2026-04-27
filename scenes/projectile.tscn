@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cksf6bd53mdsk"]
+
+[ext_resource type="Texture2D" uid="uid://oqyqonwabrxt" path="res://icon.svg" id="1_c8fcr"]
+[ext_resource type="Script" uid="uid://b1twcdmts6kqn" path="res://scripts/weapons/Projectile.cs" id="1_q3m7n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q3m7n"]
+radius = 2.0
+height = 6.0
+
+[node name="Projectile" type="Area2D" unique_id=663505775 node_paths=PackedStringArray("timeout")]
+script = ExtResource("1_q3m7n")
+timeout = NodePath("Timer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=487485577]
+position = Vector2(0, 5.9604645e-08)
+scale = Vector2(0.046874996, 0.03125)
+texture = ExtResource("1_c8fcr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1509634602]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_q3m7n")
+
+[node name="Timer" type="Timer" parent="." unique_id=681219828]
+wait_time = 5.0

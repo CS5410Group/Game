@@ -11,12 +11,14 @@ public partial class PJumpState : PlayerState
 		player.Velocity = new_vel;
 		player.coyote = false;
 		// Play jump animation
+        player.Character.Play("Jump");
 
 	}
 
     public override void OnPhysicsUpdate(double delta)
     {
 		HandleMovement(delta);
+		HandleShooting();
 
 		if (player.Velocity.Y >= 0)
 		{
