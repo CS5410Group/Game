@@ -64,7 +64,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
+radius = 16.0
 height = 44.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur7pv"]
+size = Vector2(12, 5)
 
 [node name="Player" type="CharacterBody2D" unique_id=1875659839 node_paths=PackedStringArray("Gun", "CoyoteTime", "Character")]
 floor_snap_length = 4.0
@@ -79,6 +83,11 @@ speed_scale = 2.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=524893701]
 shape = SubResource("CapsuleShape2D_g2els")
+disabled = true
+
+[node name="PlatformCollide" type="CollisionShape2D" parent="." unique_id=1165590757]
+position = Vector2(-1, 18.5)
+shape = SubResource("RectangleShape2D_ur7pv")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1776485307 node_paths=PackedStringArray("initialState")]
 script = ExtResource("2_g2els")

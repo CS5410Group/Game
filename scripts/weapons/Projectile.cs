@@ -9,10 +9,14 @@ public partial class Projectile : Area2D
 	[Export]
 	public Timer timeout;
 
+	[Export]
+	public float damage = 15;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		this.BodyEntered += HitThing;
+		this.AreaEntered += HitThing;
 		timeout.Timeout += BulletTimeout;
 		timeout.Start();
 	}
@@ -22,13 +26,22 @@ public partial class Projectile : Area2D
 		Position += Transform.X * (speed * (float) delta);
 	}
 
+	public void SetDamage(float damage) {
+		this.damage = damage;
+	}
+
 	public void HitThing(Node2D body) {
-		GD.Print("Collide Queue Free");
-		QueueFree();
+		// This is bad, should be more programatic.
+		if (body.Name != "Player") {
+			if (body.HasNode("Health")) {
+				Health hp = (Health)body.GetNode("Health");
+				hp.RemoveHealth(damage);
+			}
+			QueueFree();
+		}
 	}
 
 	public void BulletTimeout() {
-		GD.Print("Timeout Queue Free");
 		QueueFree();
 	}
 }

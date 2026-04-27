@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Diagnostics;
 
 public partial class PlayerState : State
 {
@@ -47,10 +46,27 @@ public partial class PlayerState : State
 	{
 		// Get the current player velocity
 		Vector2 new_vel = player.Velocity;
+
 		// Get the user input, apply it and gravikty
 		float input_dir = Input.GetAxis("left", "right");
 		new_vel.X = player.Speed * input_dir;
 		new_vel.Y += (float)(player.Gravity * delta);
+
+        // Set the animation
+		if (input_dir != 0) {
+			if (GetParent<StateMachine>().currState.Name == MOVING) {
+				player.Character.Play("Walk");
+			}
+		}
+        if (input_dir > 0)
+        {
+            player.Character.FlipH = false;
+        }
+        else
+        {
+            player.Character.FlipH = true;
+        }
+
 		// Set the players velocity to the new velocity, then move and slide baybeeee
 		player.Velocity = new_vel;
 		player.MoveAndSlide();

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bm75hx6lv758m"]
+
+[ext_resource type="Script" uid="uid://byn8ui5u7igtr" path="res://scripts/TestEnemy.cs" id="1_fpxyv"]
+[ext_resource type="Texture2D" uid="uid://oqyqonwabrxt" path="res://icon.svg" id="1_h17bh"]
+[ext_resource type="Script" uid="uid://cbu0vmmvf434i" path="res://scripts/components/Health.cs" id="2_mkyue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkyue"]
+size = Vector2(130, 126)
+
+[node name="TestEnemy" type="Area2D" unique_id=1844760260]
+script = ExtResource("1_fpxyv")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=992035992]
+texture = ExtResource("1_h17bh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1646552075]
+shape = SubResource("RectangleShape2D_mkyue")
+
+[node name="Health" type="Node" parent="." unique_id=743904705]
+script = ExtResource("2_mkyue")
+metadata/_custom_type_script = "uid://cbu0vmmvf434i"

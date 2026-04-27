@@ -32,17 +32,6 @@ public partial class PMoveState : PlayerState
 		{
 			finished(IDLE);
 		}
-		else {
-			if (input_dir > 0) {
-				player.Character.FlipH = false;
-				player.Character.Play("Walk");
-			}
-			else {
-				player.Character.FlipH = true;
-				player.Character.Play("Walk");
-			}
-
-		}
     }
 	
     public override void HandleInput(InputEvent @event)
