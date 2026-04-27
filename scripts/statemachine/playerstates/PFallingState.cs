@@ -25,6 +25,14 @@ public partial class PFallingState : PlayerState
                 finished(JUMPING);
             }
         }
+        if (player.hasDoubleJumpPower && player.doublejump)
+        {
+            if (Input.IsActionJustPressed("jump"))
+            {
+                GD.Print("double jump from falling");
+                finished(DOUBLEJUMPING);
+            }
+        }
 
         if (player.IsOnFloor())
         {
@@ -47,5 +55,6 @@ public partial class PFallingState : PlayerState
     public override void OnExit()
     {
         player.coyote = true;
+        player.doublejump = true;
     }
 }
