@@ -57,15 +57,15 @@ public partial class PlayerState : State
 			if (GetParent<StateMachine>().currState.Name == MOVING) {
 				player.Character.Play("Walk");
 			}
+			if (input_dir > 0)
+			{
+				player.Character.FlipH = false;
+			}
+			else
+			{
+				player.Character.FlipH = true;
+			}
 		}
-        if (input_dir > 0)
-        {
-            player.Character.FlipH = false;
-        }
-        else
-        {
-            player.Character.FlipH = true;
-        }
 
 		// Set the players velocity to the new velocity, then move and slide baybeeee
 		player.Velocity = new_vel;
