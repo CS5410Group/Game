@@ -123,6 +123,8 @@ public partial class SaveController : Node2D
 			GetNode(nodeData["Parent"].ToString()).AddChild(newObject);
 			newObject.Set(Node2D.PropertyName.Position, new Vector2((float)nodeData["PosX"], (float) nodeData["PosY"]));
 			newObject.Set(Name, nodeData["Name"]);
+			newObject.Set(Player.PropertyName.hasDoubleJumpPower, nodeData["HasDoubleJump"]);
+			newObject.Set(Player.PropertyName.hasDash, nodeData["HasDash"]);
 			// Possible to increment and relatively change public node data
 			// This could be useful for tracking multiple saves/Keeping track of most recent or otherwise
 			// Maybe use a 3-save system, so the player chooses what saves to overwrite.

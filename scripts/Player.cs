@@ -32,13 +32,13 @@ public partial class Player : CharacterBody2D, Save
 	
 	[Export]
 	// Booleans for Access and DoubleJump powerups (will replace with powerup inventory system after finals)
-	public bool hasDoubleJumpPower = true;
+	public bool hasDoubleJumpPower = false;
 	
 
 	[Export]
 	public bool hasAccessCode = true;
 	[Export]
-	public bool hasDash = true;
+	public bool hasDash = false;
 
     public override void _Ready()
     {
@@ -74,6 +74,8 @@ public partial class Player : CharacterBody2D, Save
 		{"Children", getChild()},
 		{"Parent", GetParent().GetPath()},
 		{"Name", Name},
+		{"HasDoubleJump", hasDoubleJumpPower},
+		{"HasDash", hasDash},
 		};
 
 	}

@@ -24,7 +24,7 @@ public partial class PDashState : PlayerState
 			dashTimer.Start();
 		}
 		player.DashParticles.Emitting = true;
-		new_vel =  new Vector2(-player.JumpVelocity, 0);
+		new_vel =  new Vector2(player.JumpVelocity, 0);
 		new_vel = new_vel.Rotated(player.Gun.Rotation);
 		player.Velocity = new_vel;
 	}
