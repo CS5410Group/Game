@@ -23,6 +23,7 @@ public partial class MainMenu : Node2D
 		//Test Save and Load inputs.
 		if (Input.IsActionJustPressed("ui_down"))
 		{
+			GD.Print("SAVING");
 			foreach(Node child in (Godot.Collections.Array) GetChildren())
 			{
 				if(child is Player newPlayer)

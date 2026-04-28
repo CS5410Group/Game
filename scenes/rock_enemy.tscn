@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ctkkmqvpyriv3"]
+
+[ext_resource type="Script" uid="uid://fbedg3ciwof8" path="res://scripts/enemies/RockEnemy.cs" id="1_cv7a7"]
+[ext_resource type="Texture2D" uid="uid://bbhn8ppny24as" path="res://assets/RockEnemy.png" id="1_pfrt2"]
+[ext_resource type="Script" uid="uid://cbu0vmmvf434i" path="res://scripts/components/Health.cs" id="2_cv7a7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7hbr6"]
+radius = 8.0
+height = 28.0
+
+[node name="RockEnemy" type="Area2D" unique_id=675749064]
+script = ExtResource("1_cv7a7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2028616852]
+texture = ExtResource("1_pfrt2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1766874405]
+position = Vector2(0, 8)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_7hbr6")
+
+[node name="Health" type="Node" parent="." unique_id=649487296]
+script = ExtResource("2_cv7a7")
+health = 30.0
+metadata/_custom_type_script = "uid://cbu0vmmvf434i"

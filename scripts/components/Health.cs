@@ -4,7 +4,8 @@ using System;
 [GlobalClass]
 public partial class Health: Node
 {
-    private float health = 100.0f;
+    [Export]
+    public float health = 100.0f;
 
     public float GetHealth() {
         return this.health;

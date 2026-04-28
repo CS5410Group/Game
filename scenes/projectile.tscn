@@ -2,6 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://oqyqonwabrxt" path="res://icon.svg" id="1_c8fcr"]
 [ext_resource type="Script" uid="uid://b1twcdmts6kqn" path="res://scripts/weapons/Projectile.cs" id="1_q3m7n"]
+[ext_resource type="Shader" uid="uid://dql3ee2h5bcpk" path="res://shaders/projectile/default.gdshader" id="2_softn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3m7n"]
+shader = ExtResource("2_softn")
+shader_parameter/glow_color = Color(0, 0.52347976, 0.8819824, 1)
+shader_parameter/glow_power = 3.10000004619372
+shader_parameter/glow_shift = 6.70000009983804
+shader_parameter/glow_radius = 5.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q3m7n"]
 radius = 2.0
@@ -12,6 +20,7 @@ script = ExtResource("1_q3m7n")
 timeout = NodePath("Timer")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=487485577]
+material = SubResource("ShaderMaterial_q3m7n")
 position = Vector2(0, 5.9604645e-08)
 scale = Vector2(0.046874996, 0.03125)
 texture = ExtResource("1_c8fcr")
