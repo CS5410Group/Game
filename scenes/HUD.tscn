@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://6ujh86axb3yd"]
+
+[ext_resource type="Texture2D" uid="uid://cu2exe4je24te" path="res://assets/HealthWedge.png" id="1_qpvh6"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1240792378]
+
+[node name="HealthWedge" type="Sprite2D" parent="." unique_id=307878845]
+position = Vector2(96, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("1_qpvh6")

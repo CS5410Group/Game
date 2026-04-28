@@ -23,7 +23,7 @@ public partial class PlayerState : State
 	// Debug message for when a state is entered
 	protected void DebugEnter(string prev_state)
 	{
-		GD.Print("Entered ", this.Name, " from ", prev_state);
+		GD.Print($"Entered {this.Name} from {prev_state}");
 	}
 
 	// Handle shooting
