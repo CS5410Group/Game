@@ -20,6 +20,8 @@ public partial class Player : CharacterBody2D, Save
 	public AnimatedSprite2D Character;
 
 	[Export]
+	public GpuParticles2D DashParticles;
+	[Export]
 	public int CoyoteFrames = 6;
 	public bool coyote = true;
 	public bool doublejump = false;
@@ -42,6 +44,7 @@ public partial class Player : CharacterBody2D, Save
     {
 		CoyoteTime.WaitTime = CoyoteFrames / 60.0;
 		CoyoteTime.Timeout += OnCoyoteTimeout;
+		DashParticles = GetNode<GpuParticles2D>("DashParticles");
     }
 
 	private void OnCoyoteTimeout()

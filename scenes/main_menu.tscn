@@ -46,5 +46,3 @@ tile_set = SubResource("TileSet_8ln24")
 
 [node name="Interactable" parent="." unique_id=1805940178 instance=ExtResource("4_wu84c")]
 position = Vector2(-145, -159)
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1168751084]

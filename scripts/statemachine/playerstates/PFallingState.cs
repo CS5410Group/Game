@@ -17,9 +17,7 @@ public partial class PFallingState : PlayerState
     {
         HandleMovement(delta);
 		HandleShooting();
-
-        GD.Print(player.Position);
-
+        
         if (player.coyote) {
             if (Input.IsActionJustPressed("jump"))
             {

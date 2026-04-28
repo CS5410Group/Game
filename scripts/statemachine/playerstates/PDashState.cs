@@ -15,7 +15,7 @@ public partial class PDashState : PlayerState
 		{
 			dashTimer.OneShot = true;
 			dashTimer.WaitTime = waitTime;
-			dashTimer.Timeout += () => {finished(FALLING);GD.Print("dashtimer ended");};
+			dashTimer.Timeout += () => {finished(FALLING);GD.Print("dashtimer ended");player.DashParticles.Emitting = false;};
 			this.AddChild(dashTimer);
 			dashTimer.Start();
 		}
@@ -23,8 +23,8 @@ public partial class PDashState : PlayerState
 		{
 			dashTimer.Start();
 		}
-
-		new_vel =  new Vector2(player.JumpVelocity, 0);
+		player.DashParticles.Emitting = true;
+		new_vel =  new Vector2(-player.JumpVelocity, 0);
 		new_vel = new_vel.Rotated(player.Gun.Rotation);
 		player.Velocity = new_vel;
 	}

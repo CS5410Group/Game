@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cnowfh5pxhbi" path="res://scripts/statemachine/playerstates/PDashState.cs" id="8_ur7pv"]
 [ext_resource type="PackedScene" uid="uid://dinkxdixjbp2w" path="res://scenes/player_gun.tscn" id="11_3v2ag"]
 [ext_resource type="PackedScene" uid="uid://cksf6bd53mdsk" path="res://scenes/projectile.tscn" id="12_3v2ag"]
+[ext_resource type="Texture2D" uid="uid://bmb5k847lrqqu" path="res://assets/tempsmile.png" id="12_jej6c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
 atlas = ExtResource("3_d2wvv")
@@ -69,6 +70,13 @@ animations = [{
 radius = 16.0
 height = 48.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3v2ag"]
+particle_flag_disable_z = true
+angular_velocity_min = -332.31
+angular_velocity_max = 88.61998
+scale_min = 0.25
+scale_max = 0.5
+
 [node name="Player" type="CharacterBody2D" unique_id=1875659839 node_paths=PackedStringArray("Gun", "CoyoteTime", "Character")]
 floor_snap_length = 4.0
 script = ExtResource("1_qlg0r")
@@ -121,3 +129,13 @@ projectile = ExtResource("12_3v2ag")
 
 [node name="CoyoteTime" type="Timer" parent="." unique_id=2129363477]
 one_shot = true
+
+[node name="DashParticles" type="GPUParticles2D" parent="." unique_id=664050148]
+show_behind_parent = true
+visibility_layer = 4
+position = Vector2(0, 30)
+scale = Vector2(0.5, 0.5)
+emitting = false
+amount = 100
+texture = ExtResource("12_jej6c")
+process_material = SubResource("ParticleProcessMaterial_3v2ag")

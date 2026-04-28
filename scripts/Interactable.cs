@@ -5,6 +5,10 @@ public partial class Interactable : Node2D
 {
 	public Label label;
 	public Area2D area;
+	[Export]
+	public string labelTextNormal;
+	[Export]
+	public string labelTextInteracted;
 	public override void _Ready()
 	{
 		this.label = GetNode<Label>("Label");
@@ -18,8 +22,8 @@ public partial class Interactable : Node2D
 	{
 		if(label.Visible && Input.IsActionJustPressed("interact"))
 		{
-			GD.Print("INTERACTED!!!!!!!");
 			Interacted?.Invoke();
+			label.Text = labelTextInteracted;
 		}
 	}
 	public void onDisplay(Node2D body)
@@ -36,6 +40,7 @@ public partial class Interactable : Node2D
 	if (body is Player)
 		{
 		label.Visible = false;
+		label.Text = labelTextNormal;
 		}	
 	}
 	public event Action Interacted;

@@ -20,7 +20,7 @@ public partial class PDoubleJumpState : PlayerState
         {
             if (Input.IsActionJustPressed("dash"))
             {
-                GD.Print("dash from falling");
+                GD.Print("dash from Double jump");
                 finished(DASHING);
             }
         }

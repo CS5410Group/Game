@@ -18,9 +18,10 @@ texture = ExtResource("1_c6f01")
 shape = SubResource("CircleShape2D_0iwdk")
 
 [node name="Label" type="Label" parent="." unique_id=1160276044]
-visible = false
-offset_left = -45.0
-offset_top = -57.0
-offset_right = 43.0
-offset_bottom = -34.0
-text = "TEST LABEL"
+offset_left = -60.0
+offset_top = -66.0
+offset_right = 62.0
+offset_bottom = -43.0
+text = "Interact to Save"
+horizontal_alignment = 1
+vertical_alignment = 1

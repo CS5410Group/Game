@@ -19,6 +19,14 @@ public partial class PMoveState : PlayerState
 		// Get input direction for left/right movement for state stuff
 		float input_dir = Input.GetAxis("left", "right");
 
+		if (player.hasDash && player.dash)
+        {
+            if (Input.IsActionJustPressed("dash"))
+            {
+                GD.Print("dash from Moving");
+                finished(DASHING);
+            }
+        }
 		if (!player.IsOnFloor())
 		{
 			finished(FALLING);
