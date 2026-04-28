@@ -4,24 +4,35 @@ using System;
 [GlobalClass]
 public partial class PDashState : PlayerState
 {
-	public override void OnEnter(string prev_state) {
+	[Export]
+	Timer dashTimer = new Timer();
+	
+	[Export]
+	public float waitTime = 0.25f;	public override void OnEnter(string prev_state) {
 		Vector2 new_vel = Vector2.Zero;
-
-		new_vel.X = -player.JumpVelocity;
-        new_vel.Y = -player.JumpVelocity;
 		player.Velocity = new_vel;
-		// Play double jump animation
+		if (!this.IsAncestorOf(dashTimer))
+		{
+			dashTimer.OneShot = true;
+			dashTimer.WaitTime = waitTime;
+			dashTimer.Timeout += () => {finished(FALLING);GD.Print("dashtimer ended");};
+			this.AddChild(dashTimer);
+			dashTimer.Start();
+		}
+		else
+		{
+			dashTimer.Start();
+		}
 
+		new_vel =  new Vector2(player.JumpVelocity, 0);
+		new_vel = new_vel.Rotated(player.Gun.Rotation);
+		player.Velocity = new_vel;
 	}
 
     public override void OnPhysicsUpdate(double delta)
-    {
-		HandleMovement(delta);
+    {	
 
-		if (player.Velocity.Y >= 0)
-		{
-			finished(FALLING);
-		}
+		player.MoveAndSlide();
     }
 	
     public override void HandleInput(InputEvent @event)
