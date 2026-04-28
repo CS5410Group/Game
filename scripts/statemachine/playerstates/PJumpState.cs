@@ -20,19 +20,10 @@ public partial class PJumpState : PlayerState
 		HandleMovement(delta);
 		HandleShooting();
 
-		
 		if (player.Velocity.Y >= 0)
 		{
 			finished(FALLING);
 		}
-		else if (player.hasDoubleJumpPower && player.doublejump)
-        {
-            if (Input.IsActionJustPressed("jump"))
-            {
-                GD.Print("double jump from falling");
-                finished(DOUBLEJUMPING);
-            }
-        }
     }
 	
     public override void HandleInput(InputEvent @event)
