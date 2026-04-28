@@ -78,6 +78,8 @@ scale_min = 0.25
 scale_max = 0.5
 
 [node name="Player" type="CharacterBody2D" unique_id=1875659839 node_paths=PackedStringArray("Gun", "CoyoteTime", "Character")]
+collision_layer = 3
+collision_mask = 3
 floor_snap_length = 4.0
 script = ExtResource("1_qlg0r")
 Gun = NodePath("Gun")
