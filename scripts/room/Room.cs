@@ -30,8 +30,9 @@ public partial class Room : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Camera.Position = new(Math.Clamp(Player.Position.X, LimitLeft, LimitRight), Math.Clamp(Player.Position.Y, LimitTop, LimitBottom));
-		GD.Print(Camera.Position.X + " " + Camera.Position.Y);
+		Camera.Position = Player.Position;
+		//Camera.Position = new(Math.Clamp(Player.Position.X, LimitLeft, LimitRight), Math.Clamp(Player.Position.Y, LimitTop, LimitBottom));
+		//GD.Print(Camera.Position.X + " " + Camera.Position.Y);
 		
 	}
 }
