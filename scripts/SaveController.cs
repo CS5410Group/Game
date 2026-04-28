@@ -69,6 +69,10 @@ public partial class SaveController : Node2D
 		//rn this is just to clear the current player instance to show saving/loading.
 		// Todo: set up this part of load to reload player states more gracefully.
 		
+		if (!FileAccess.FileExists("user://playerSave.json"))
+		{
+			return;
+		}
 		//Change this from deleting, to changing scene perhaps.
 		var main = GetTree().Root.GetNode("MainMenu");
 		if (main == null)
@@ -82,10 +86,6 @@ public partial class SaveController : Node2D
 			{
 			player.QueueFree();
 			}
-		}
-		if (!FileAccess.FileExists("user://playerSave.json"))
-		{
-			return;
 		}
 		//loop is useful in case of multiple objects saved within json; not useful atm.
 		using var saveFile = FileAccess.Open("user://playerSave.json", FileAccess.ModeFlags.Read);

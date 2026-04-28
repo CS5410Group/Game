@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://q38768jhso7y"]
+
+[ext_resource type="PackedScene" uid="uid://bm75hx6lv758m" path="res://scenes/test_enemy.tscn" id="1_lfv2t"]
+
+[sub_resource type="Curve2D" id="Curve2D_hcd52"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 225, 70, 0, 0, 0, 0, -68, -43, 0, 0, 0, 0, 225, 70)
+}
+point_count = 3
+
+[node name="PathTest" type="Node2D" unique_id=705847211]
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1071249391]
+curve = SubResource("Curve2D_hcd52")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=696880058]
+position = Vector2(161.81131, 45.6303)
+progress = 67.73047
+rotates = false
+
+[node name="TestEnemy" parent="Path2D/PathFollow2D" unique_id=1844760260 instance=ExtResource("1_lfv2t")]

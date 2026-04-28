@@ -11,17 +11,36 @@ public partial class PJumpState : PlayerState
 		player.Velocity = new_vel;
 		player.coyote = false;
 		// Play jump animation
+        player.Character.Play("jump");
 
 	}
 
     public override void OnPhysicsUpdate(double delta)
     {
 		HandleMovement(delta);
+		HandleShooting();
 
+		
 		if (player.Velocity.Y >= 0)
 		{
 			finished(FALLING);
 		}
+		else if (player.hasDoubleJumpPower && player.doublejump)
+        {
+            if (Input.IsActionJustPressed("jump"))
+            {
+                GD.Print("double jump from falling");
+                finished(DOUBLEJUMPING);
+            }
+        }
+        if (player.hasDash && player.dash)
+        {
+            if (Input.IsActionJustPressed("dash"))
+            {
+                GD.Print("dash from falling");
+                finished(DASHING);
+            }
+        }
     }
 	
     public override void HandleInput(InputEvent @event)

@@ -11,22 +11,40 @@ public partial class Player : CharacterBody2D, Save
 	public float Gravity = 4000.0f;
 
 	[Export]
-	public Node2D Gun = null;
+	public PGun Gun = null;
 
 	[Export]
 	public Timer CoyoteTime;
 
 	[Export]
+	public AnimatedSprite2D Character;
+
+	[Export]
+	public GpuParticles2D DashParticles;
+	[Export]
 	public int CoyoteFrames = 6;
 	public bool coyote = true;
+	public bool doublejump = false;
+	public bool dash = false;
 
 	// Used to determine where the gun points
 	public Vector2 aim_point = Vector2.Zero;
+	
+	[Export]
+	// Booleans for Access and DoubleJump powerups (will replace with powerup inventory system after finals)
+	public bool hasDoubleJumpPower = true;
+	
+
+	[Export]
+	public bool hasAccessCode = true;
+	[Export]
+	public bool hasDash = true;
 
     public override void _Ready()
     {
 		CoyoteTime.WaitTime = CoyoteFrames / 60.0;
 		CoyoteTime.Timeout += OnCoyoteTimeout;
+		DashParticles = GetNode<GpuParticles2D>("DashParticles");
     }
 
 	private void OnCoyoteTimeout()
@@ -59,4 +77,5 @@ public partial class Player : CharacterBody2D, Save
 		};
 
 	}
+
 }
