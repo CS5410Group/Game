@@ -15,6 +15,7 @@ public partial class PlayerState : State
 	public const string MOVING = "PMoveState";
 	public const string JUMPING = "PJumpState";
 	public const string DOUBLEJUMPING = "PDoubleJumpState";
+	public const string DASHING = "PDashState";
     public override void _Ready()
     {
 		player = (Player) Owner;

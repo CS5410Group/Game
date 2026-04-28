@@ -31,6 +31,14 @@ public partial class PJumpState : PlayerState
                 finished(DOUBLEJUMPING);
             }
         }
+        if (player.hasDash && player.dash)
+        {
+            if (Input.IsActionJustPressed("dash"))
+            {
+                GD.Print("dash from falling");
+                finished(DASHING);
+            }
+        }
     }
 	
     public override void HandleInput(InputEvent @event)
