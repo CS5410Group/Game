@@ -14,6 +14,7 @@ public partial class PlayerState : State
 	public const string MOVING = "PMoveState";
 	public const string JUMPING = "PJumpState";
 	public const string DOUBLEJUMPING = "PDoubleJumpState";
+	public const string DASHING = "PDashState";
     public override void _Ready()
     {
 		player = (Player) Owner;
@@ -55,7 +56,7 @@ public partial class PlayerState : State
         // Set the animation
 		if (input_dir != 0) {
 			if (GetParent<StateMachine>().currState.Name == MOVING) {
-				player.Character.Play("Walk");
+				player.Character.Play("walk");
 			}
 			if (input_dir > 0)
 			{

@@ -2,11 +2,13 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class PDoubleJumpState : PlayerState
+public partial class PDashState : PlayerState
 {
 	public override void OnEnter(string prev_state) {
 		Vector2 new_vel = Vector2.Zero;
-		new_vel.Y = -player.JumpVelocity;
+
+		new_vel.X = -player.JumpVelocity;
+        new_vel.Y = -player.JumpVelocity;
 		player.Velocity = new_vel;
 		// Play double jump animation
 
@@ -16,14 +18,6 @@ public partial class PDoubleJumpState : PlayerState
     {
 		HandleMovement(delta);
 
-		if (player.hasDash && player.dash)
-        {
-            if (Input.IsActionJustPressed("dash"))
-            {
-                GD.Print("dash from falling");
-                finished(DASHING);
-            }
-        }
 		if (player.Velocity.Y >= 0)
 		{
 			finished(FALLING);
@@ -36,6 +30,6 @@ public partial class PDoubleJumpState : PlayerState
     }
     public override void OnExit()
 	{
-		player.doublejump = false;
+		player.dash = false;
 	}
 }

@@ -23,9 +23,11 @@ public partial class Player : CharacterBody2D, Save
 	public int CoyoteFrames = 6;
 	public bool coyote = true;
 	public bool doublejump = false;
+	public bool dash = false;
 
 	// Used to determine where the gun points
 	public Vector2 aim_point = Vector2.Zero;
+	
 	[Export]
 	// Booleans for Access and DoubleJump powerups (will replace with powerup inventory system after finals)
 	public bool hasDoubleJumpPower = true;
@@ -33,6 +35,8 @@ public partial class Player : CharacterBody2D, Save
 
 	[Export]
 	public bool hasAccessCode = true;
+	[Export]
+	public bool hasDash = true;
 
     public override void _Ready()
     {
@@ -70,4 +74,5 @@ public partial class Player : CharacterBody2D, Save
 		};
 
 	}
+
 }

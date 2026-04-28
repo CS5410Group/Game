@@ -11,7 +11,7 @@ public partial class PJumpState : PlayerState
 		player.Velocity = new_vel;
 		player.coyote = false;
 		// Play jump animation
-        player.Character.Play("Jump");
+        player.Character.Play("jump");
 
 	}
 
@@ -31,6 +31,14 @@ public partial class PJumpState : PlayerState
             {
                 GD.Print("double jump from falling");
                 finished(DOUBLEJUMPING);
+            }
+        }
+        if (player.hasDash && player.dash)
+        {
+            if (Input.IsActionJustPressed("dash"))
+            {
+                GD.Print("dash from falling");
+                finished(DASHING);
             }
         }
     }
