@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c88wp7wvahp2j" path="res://assets/pride-flag-tileset.png" id="3_bqqt6"]
 [ext_resource type="PackedScene" uid="uid://bwvoa8yj3b8u7" path="res://scenes/Interactable.tscn" id="4_wu84c"]
 [ext_resource type="Texture2D" uid="uid://oqyqonwabrxt" path="res://icon.svg" id="5_8ln24"]
+[ext_resource type="Texture2D" uid="uid://spt82vakv8yy" path="res://assets/SavePoint.png" id="5_oa1go"]
 [ext_resource type="Texture2D" uid="uid://bbhn8ppny24as" path="res://assets/RockEnemy.png" id="6_rtw2f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekxnf"]
@@ -54,6 +55,7 @@ position = Vector2(-145, -159)
 labelTextNormal = "Interact to Save"
 labelTextInteracted = "Saved"
 Purpose = "save_player"
+sprite = ExtResource("5_oa1go")
 
 [node name="DoublejumpInteractable" parent="." unique_id=1006894724 instance=ExtResource("4_wu84c")]
 position = Vector2(53, 1)
