@@ -17,18 +17,33 @@ public partial class RockEnemy : Area2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		follow_path = this.GetParent<PathFollow2D>();
+		Node parent = this.GetParent();
+		if (parent is PathFollow2D d) {
+			follow_path = d;
+		}
+		else {
+			follow_path = null;
+		}
+		this.BodyEntered += HurtPlayer;
+		this.AreaEntered += HurtPlayer;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if (follow_path != null) {
-			follow_path.Progress += path_speed;			
+			//follow_path.Progress += path_speed;			
 		}
 
 		if (health.GetHealth() <= 0 ) {
 			QueueFree();
+		}
+	}
+
+	public void HurtPlayer(Node2D body) {
+		if (body.HasNode("Health")) {
+			Health hp = body.GetNode<Health>("Health");
+			hp.RemoveHealth(10);
 		}
 	}
 }

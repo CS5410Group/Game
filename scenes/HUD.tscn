@@ -1,10 +1,24 @@
 [gd_scene format=3 uid="uid://6ujh86axb3yd"]
 
+[ext_resource type="Script" uid="uid://6hex0kqwa4bg" path="res://scripts/Hud.cs" id="1_fls4u"]
 [ext_resource type="Texture2D" uid="uid://cu2exe4je24te" path="res://assets/HealthWedge.png" id="1_qpvh6"]
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1240792378]
+[sub_resource type="LabelSettings" id="LabelSettings_qpvh6"]
+font_size = 25
 
-[node name="HealthWedge" type="Sprite2D" parent="." unique_id=307878845]
-position = Vector2(96, 48)
-scale = Vector2(3, 3)
+[node name="Camera" type="Camera2D" unique_id=496648991 node_paths=PackedStringArray("hp_label")]
+script = ExtResource("1_fls4u")
+hp_label = NodePath("Hud/Label")
+
+[node name="Hud" type="CanvasLayer" parent="." unique_id=365714669]
+
+[node name="HealthWedge" type="Sprite2D" parent="Hud" unique_id=307878845]
+position = Vector2(64, 32)
+scale = Vector2(2, 2)
 texture = ExtResource("1_qpvh6")
+
+[node name="Label" type="Label" parent="Hud" unique_id=1055238804]
+offset_right = 146.0
+offset_bottom = 49.0
+text = "HP: 100"
+label_settings = SubResource("LabelSettings_qpvh6")

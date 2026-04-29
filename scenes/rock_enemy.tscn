@@ -8,8 +8,9 @@
 radius = 8.0
 height = 28.0
 
-[node name="RockEnemy" type="Area2D" unique_id=675749064]
+[node name="RockEnemy" type="Area2D" unique_id=675749064 node_paths=PackedStringArray("health")]
 script = ExtResource("1_cv7a7")
+health = NodePath("Health")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2028616852]
 texture = ExtResource("1_pfrt2")
