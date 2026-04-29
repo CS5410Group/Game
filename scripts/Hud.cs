@@ -21,6 +21,8 @@ public partial class Hud : Camera2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		hp_label.Text = $"HP: {player_hp.GetHealth()}";
+		if (hp_label != null) {
+			hp_label.Text = $"HP: {player_hp.GetHealth()}";
+		}
 	}
 }

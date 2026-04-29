@@ -8,5 +8,8 @@ public partial class GameManager : Node
 		GetTree().ChangeSceneToFile("res://scenes/levels/Cave_Start.tscn");
 	}
 
+	public void LoadMenu() {
+		GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
+	}
 	
 }
