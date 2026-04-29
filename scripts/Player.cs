@@ -89,6 +89,8 @@ public partial class Player : CharacterBody2D, Save
 		{"PosX", Position.X},
 		{"PosY", Position.Y},
 		{"Children", getChild()},
+		{"HasDoubleJump", hasDoubleJumpPower},
+		{"HasDash", hasDash},
 		{"Parent", GetParent().GetPath()},
 		{"Name", Name},
 		};
