@@ -10,6 +10,7 @@ height = 28.0
 
 [node name="RockEnemy" type="Area2D" unique_id=675749064 node_paths=PackedStringArray("health")]
 script = ExtResource("1_cv7a7")
+path_speed = 3.0
 health = NodePath("Health")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2028616852]

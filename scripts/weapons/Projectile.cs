@@ -33,7 +33,7 @@ public partial class Projectile : Area2D
 	public void HitThing(Node2D body) {
 		// TODO: This is bad, should be more programatic. Maybe pass in entity that shot
 		//		 Set that at the same time the postition and rotation are set.
-		if (body.Name != "Player") {
+		if (!(body is Player)) {
 			if (body.HasNode("Health")) {
 				Health hp = body.GetNode<Health>("Health");
 				hp.RemoveHealth(damage);

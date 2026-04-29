@@ -48,7 +48,11 @@ public partial class SaveController : Node2D
 			return nodeData;
 	}
 
-	
+	public void newFile()
+	{
+		using var saveFile = FileAccess.Open("user://playerSave.json", FileAccess.ModeFlags.Write);
+		saveFile.StoreLine("");
+	}
 	// Saves current Player state into playerSave.json by receiving a godot dictionary from player's save() method
 	// and converting it into a json string using Godot.Json library
 	// TODO: Rework this to create a simple checkpoint system for falls

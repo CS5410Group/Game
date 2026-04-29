@@ -10,6 +10,11 @@ public partial class Room : Node2D
 	private SaveController SaveController;
 	
 	InteractableContainer SaveContainer;
+	//could definitely do this more efficiently with a good refactor, but works for now
+	private Interactable doublejumpInteractable;
+	private Interactable dashInteractable;
+	private Interactable healInteractable;
+	private Interactable junkInteractable;
 	float LimitLeft;
 	float LimitRight;
 	float LimitTop;
@@ -25,6 +30,14 @@ public partial class Room : Node2D
 		SaveController = GetTree().Root.GetNode<SaveController>("SaveController");
 		SaveContainer = GetNode<InteractableContainer>("SaveContainer");
 		SaveContainer.Interacted += onSaved;
+		doublejumpInteractable = GetNode<Interactable>("DoublejumpInteractable");
+		doublejumpInteractable.Interacted += obtainDoublejump;
+		dashInteractable = GetNode<Interactable>("DashInteractable");
+		dashInteractable.Interacted += obtainDash;
+		healInteractable = GetNode<Interactable>("HealInteractable");
+		healInteractable.Interacted += healPlayer;
+		junkInteractable = GetNode<Interactable>("JunkInteractable");
+		junkInteractable.Interacted += () => {junkInteractable.QueueFree();};
 		int tileSize = (int)Ground.TileSet.TileSize.X;
 
 		LimitLeft = CameraBounds.Position.X * tileSize;
@@ -64,4 +77,19 @@ public partial class Room : Node2D
 				}
 			}		
 		}
+	public void obtainDoublejump()
+	{
+		Player.hasDoubleJumpPower = true;
+		doublejumpInteractable.QueueFree();
+	}
+	public void obtainDash()
+	{
+		Player.hasDash = true;
+		dashInteractable.QueueFree();
+	}
+	public void healPlayer()
+	{
+		Player.health.AddHealth(50);
+		healInteractable.QueueFree();
+	}
 }

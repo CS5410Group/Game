@@ -38,7 +38,7 @@ public partial class Player : CharacterBody2D, Save
 	[Export]
 	public bool hasDash = true;
 
-	private Health health;
+	public Health health;
 
     [Export]
 	public GpuParticles2D DashParticles;

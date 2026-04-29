@@ -21,6 +21,8 @@ public partial class Menu : Node2D
 
 	public void HandleNewGame() {
 		GameManager gm = GetTree().Root.GetNode<GameManager>("GameManager");
+		SaveController save = GetTree().Root.GetNode<SaveController>("SaveController");
+		save.newFile();
 		gm.LoadCave();
 	}
 	
