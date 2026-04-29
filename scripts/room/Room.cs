@@ -31,6 +31,7 @@ public partial class Room : Node2D
 		LimitTop = CameraBounds.Position.Y * tileSize;
 		LimitRight = CameraBounds.End.X * tileSize;
 		LimitBottom = CameraBounds.End.Y * tileSize;
+		loadPlayer();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,4 +46,16 @@ public partial class Room : Node2D
 	{	
 		SaveController.SavePlayer(Player);
 	}
+	public void loadPlayer()
+	{
+			SaveController.LoadPlayer();
+			Player = GetNode<Player>("Player");
+			foreach(Node child in (Godot.Collections.Array) GetChildren())
+			{
+				if(child is Player newPlayer)
+				{
+					Player = newPlayer;
+				}
+			}		
+		}
 }
