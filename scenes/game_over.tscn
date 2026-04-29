@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://ryqm1hp5vv6v"]
 
+[ext_resource type="Script" uid="uid://ck12gl04uhij2" path="res://scripts/GameOver.cs" id="1_xeevv"]
+
 [node name="GameOver" type="Node2D" unique_id=1032650357]
+script = ExtResource("1_xeevv")
 
 [node name="Label" type="Label" parent="." unique_id=1758209005]
 offset_top = 109.0
@@ -8,3 +11,10 @@ offset_right = 640.0
 offset_bottom = 132.0
 text = "GAME OVER"
 horizontal_alignment = 1
+
+[node name="BMenu" type="Button" parent="." unique_id=1258722032]
+offset_left = 248.0
+offset_top = 138.0
+offset_right = 398.0
+offset_bottom = 169.0
+text = "Return To Menu"

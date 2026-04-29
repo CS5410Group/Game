@@ -23,6 +23,7 @@ public partial class Menu : Node2D
 		GameManager gm = GetTree().Root.GetNode<GameManager>("GameManager");
 		gm.LoadCave();
 	}
+	
 	public void HandleLoadGame() {
 		GameManager gm = GetTree().Root.GetNode<GameManager>("GameManager");
 		gm.LoadCave();

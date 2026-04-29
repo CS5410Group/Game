@@ -11,5 +11,9 @@ public partial class GameManager : Node
 	public void LoadMenu() {
 		GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
 	}
+
+	public void GameOver() {
+		GetTree().ChangeSceneToFile("res://scenes/game_over.tscn");
+	}
 	
 }

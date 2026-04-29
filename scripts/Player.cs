@@ -20,8 +20,6 @@ public partial class Player : CharacterBody2D, Save
 	public AnimatedSprite2D Character;
 
 	[Export]
-	public GpuParticles2D DashParticles;
-	[Export]
 	public int CoyoteFrames = 6;
 	public bool coyote = true;
 	public bool doublejump = false;
@@ -32,19 +30,29 @@ public partial class Player : CharacterBody2D, Save
 	
 	[Export]
 	// Booleans for Access and DoubleJump powerups (will replace with powerup inventory system after finals)
-	public bool hasDoubleJumpPower = false;
+	public bool hasDoubleJumpPower = true;
 	
 
 	[Export]
 	public bool hasAccessCode = true;
 	[Export]
-	public bool hasDash = false;
+	public bool hasDash = true;
+
+	private Health health;
 
     public override void _Ready()
     {
 		CoyoteTime.WaitTime = CoyoteFrames / 60.0;
 		CoyoteTime.Timeout += OnCoyoteTimeout;
-		DashParticles = GetNode<GpuParticles2D>("DashParticles");
+		health = GetNode<Health>("Health");
+    }
+
+    public override void _Process(double delta)
+    {
+		if (health.GetHealth() <= 0) {
+            GameManager gm = GetTree().Root.GetNode<GameManager>("GameManager");
+            gm.GameOver();
+		}
     }
 
 	private void OnCoyoteTimeout()
@@ -72,10 +80,8 @@ public partial class Player : CharacterBody2D, Save
 		{"PosX", Position.X},
 		{"PosY", Position.Y},
 		{"Children", getChild()},
-		{"Parent", GetParent().Name},
+		{"Parent", GetParent().GetPath()},
 		{"Name", Name},
-		{"HasDoubleJump", hasDoubleJumpPower},
-		{"HasDash", hasDash},
 		};
 
 	}
