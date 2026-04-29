@@ -74,23 +74,10 @@ public partial class SaveController : Node2D
 			return;
 		}
 		//Change this from deleting, to changing scene perhaps.
-		var main = GetTree().Root.GetNode("MainMenu");
-		if (main == null)
-		{
-			main = GetTree().Root.GetNode("main_menu");
-		}
-		var children = main.GetChildren();
-		foreach (Node child in children)
-		{
-			if(child is Player player)
-			{
-			player.QueueFree();
-			}
-		}
-		//loop is useful in case of multiple objects saved within json; not useful atm.
 		using var saveFile = FileAccess.Open("user://playerSave.json", FileAccess.ModeFlags.Read);
-		while (saveFile.GetPosition() < saveFile.GetLength())
-		{
+		//loop is useful in case of multiple objects but no longer useful due to only saving and loading player data.
+		// while (saveFile.GetPosition() < saveFile.GetLength())
+		// {
 			var jsonString = saveFile.GetLine();
 
 			var json = new Json();
@@ -98,7 +85,7 @@ public partial class SaveController : Node2D
 			if (parseResult != Error.Ok)
 			{
             GD.Print($"JSON Parse Error: {json.GetErrorMessage()} in {jsonString} at line {json.GetErrorLine()}");			
-			continue;
+			return;
 			}
 			var nodeData = new Godot.Collections.Dictionary<string, Variant>((Godot.Collections.Dictionary)json.Data);
 
@@ -106,21 +93,9 @@ public partial class SaveController : Node2D
 			var newObjectScene = GD.Load<PackedScene>(nodeData["Filename"].ToString());
 			var newObject = newObjectScene.Instantiate<Node>();
 			
-			
-			// // Could be useful to instatiate objects however currently not useful
-			//  // add children, may not be used due to godots innate saving.
-			// foreach(string child in (Godot.Collections.Array)nodeData["Children"])
-			// {
-			// 	var newChildScene = GD.Load<PackedScene>(child);
-			// 	var newChild = newChildScene.Instantiate<Node>();
-			// 	if(newChild.Name == "Child1")
-			// 	{
-			// 		newChild.Set(Label.PropertyName.Text, "loaded");
-			// 	}
-			// 	newObject.AddChild(newChild);
-				
-			// }
-			GetNode(nodeData["Parent"].ToString()).AddChild(newObject);
+			var parent = GetTree().Root.GetNode<Room>(nodeData["Parent"].ToString());
+			parent.GetNode<Player>("Player").QueueFree();
+			parent.AddChild(newObject);
 			newObject.Set(Node2D.PropertyName.Position, new Vector2((float)nodeData["PosX"], (float) nodeData["PosY"]));
 			newObject.Set(Name, nodeData["Name"]);
 			newObject.Set(Player.PropertyName.hasDoubleJumpPower, nodeData["HasDoubleJump"]);
@@ -129,6 +104,6 @@ public partial class SaveController : Node2D
 			// This could be useful for tracking multiple saves/Keeping track of most recent or otherwise
 			// Maybe use a 3-save system, so the player chooses what saves to overwrite.
 			// newObject.Set(Player.PropertyName.JumpVelocity, (float) nodeData["JumpVelocity"] + 100f);
-		}
+		// }
 	}
 }
