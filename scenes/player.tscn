@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dinkxdixjbp2w" path="res://scenes/player_gun.tscn" id="11_3v2ag"]
 [ext_resource type="PackedScene" uid="uid://cksf6bd53mdsk" path="res://scenes/projectile.tscn" id="12_3v2ag"]
 [ext_resource type="Texture2D" uid="uid://bmb5k847lrqqu" path="res://assets/tempsmile.png" id="12_jej6c"]
+[ext_resource type="Script" uid="uid://cbu0vmmvf434i" path="res://scripts/components/Health.cs" id="13_jej6c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
 atlas = ExtResource("3_d2wvv")
@@ -139,3 +140,7 @@ emitting = false
 amount = 100
 texture = ExtResource("12_jej6c")
 process_material = SubResource("ParticleProcessMaterial_3v2ag")
+
+[node name="Health" type="Node" parent="." unique_id=781266796]
+script = ExtResource("13_jej6c")
+metadata/_custom_type_script = "uid://cbu0vmmvf434i"
