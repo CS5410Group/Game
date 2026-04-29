@@ -4,7 +4,7 @@ using System;
 
 public partial class Room : Node2D
 {
-	CharacterBody2D Player;
+	public Player Player;
 	Camera2D Camera;
 	TileMapLayer Ground;
 	private SaveController SaveController;
@@ -19,7 +19,7 @@ public partial class Room : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Player = GetNode<CharacterBody2D>("Player");
+		Player = GetNode<Player>("Player");
 		Camera = GetNode<Camera2D>("Camera");
 		Ground = GetNode<TileMapLayer>("Ground");
 		SaveController = GetTree().Root.GetNode<SaveController>("SaveController");
@@ -37,7 +37,13 @@ public partial class Room : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Camera.Position = Player.Position;
+		//Player = GetNode<CharacterBody2D>("Player");
+		if (Player != null) {
+			Camera.Position = Player.Position;
+		}
+		else {
+			Player = GetNode<Player>("Player");
+		}
 		//Camera.Position = new(Math.Clamp(Player.Position.X, LimitLeft, LimitRight), Math.Clamp(Player.Position.Y, LimitTop, LimitBottom));
 		//GD.Print(Camera.Position.X + " " + Camera.Position.Y);
 		

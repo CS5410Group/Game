@@ -78,7 +78,7 @@ angular_velocity_max = 88.61998
 scale_min = 0.25
 scale_max = 0.5
 
-[node name="Player" type="CharacterBody2D" unique_id=1875659839 node_paths=PackedStringArray("Gun", "CoyoteTime", "Character")]
+[node name="Player" type="CharacterBody2D" unique_id=1875659839 node_paths=PackedStringArray("Gun", "CoyoteTime", "Character", "DashParticles")]
 collision_layer = 3
 collision_mask = 3
 floor_snap_length = 4.0
@@ -86,6 +86,7 @@ script = ExtResource("1_qlg0r")
 Gun = NodePath("Gun")
 CoyoteTime = NodePath("CoyoteTime")
 Character = NodePath("AnimatedSprite2D")
+DashParticles = NodePath("DashParticles")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=184930165]
 sprite_frames = SubResource("SpriteFrames_fulsm")

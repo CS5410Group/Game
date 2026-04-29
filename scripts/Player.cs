@@ -40,11 +40,15 @@ public partial class Player : CharacterBody2D, Save
 
 	private Health health;
 
+    [Export]
+	public GpuParticles2D DashParticles;
+
     public override void _Ready()
     {
 		CoyoteTime.WaitTime = CoyoteFrames / 60.0;
 		CoyoteTime.Timeout += OnCoyoteTimeout;
 		health = GetNode<Health>("Health");
+		DashParticles = GetNode<GpuParticles2D>("DashParticles");
     }
 
     public override void _Process(double delta)
@@ -53,6 +57,11 @@ public partial class Player : CharacterBody2D, Save
             GameManager gm = GetTree().Root.GetNode<GameManager>("GameManager");
             gm.GameOver();
 		}
+    }
+    public override void _EnterTree()
+    {
+		GetParent<Room>().Player = this;
+		GetParent().GetNode<Hud>("Camera").player = this;
     }
 
 	private void OnCoyoteTimeout()

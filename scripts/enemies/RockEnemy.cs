@@ -32,7 +32,7 @@ public partial class RockEnemy : Area2D
 	public override void _Process(double delta)
 	{
 		if (follow_path != null) {
-			//follow_path.Progress += path_speed;			
+			follow_path.Progress += path_speed;			
 		}
 
 		if (health.GetHealth() <= 0 ) {
