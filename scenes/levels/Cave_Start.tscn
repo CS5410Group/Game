@@ -2,6 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dn1g2s3f5sxqh" path="res://scenes/room/Room.tscn" id="1_p2m4e"]
 [ext_resource type="TileSet" uid="uid://13jbdlqdjifw" path="res://assets/Cave-Tile-Set.tres" id="2_on7bd"]
+[ext_resource type="PackedScene" uid="uid://bwvoa8yj3b8u7" path="res://scenes/Interactable.tscn" id="3_83nit"]
+[ext_resource type="Script" uid="uid://djis1205c8qjb" path="res://scripts/InteractableContainer.cs" id="3_fa1ee"]
+[ext_resource type="Texture2D" uid="uid://spt82vakv8yy" path="res://assets/SavePoint.png" id="4_fa1ee"]
 
 [node name="Room" unique_id=1574444025 instance=ExtResource("1_p2m4e")]
 
@@ -18,3 +21,21 @@ limit_left = -3892
 limit_top = 88
 limit_right = 10000077
 limit_bottom = 9999971
+
+[node name="SaveContainer" type="Node" parent="." index="5" unique_id=257146015]
+script = ExtResource("3_fa1ee")
+metadata/_custom_type_script = "uid://djis1205c8qjb"
+
+[node name="SaveInteractable" parent="SaveContainer" index="0" unique_id=1805940178 instance=ExtResource("3_83nit")]
+position = Vector2(-401, 838)
+labelTextNormal = "Interact to Save"
+labelTextInteracted = "Saved"
+Purpose = "save_player"
+sprite = ExtResource("4_fa1ee")
+
+[node name="SaveInteractable2" parent="SaveContainer" index="1" unique_id=1981991053 instance=ExtResource("3_83nit")]
+position = Vector2(-3788, 1066)
+labelTextNormal = "Interact to Save"
+labelTextInteracted = "Saved"
+Purpose = "save_player"
+sprite = ExtResource("4_fa1ee")
