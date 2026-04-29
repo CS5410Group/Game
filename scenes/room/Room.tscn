@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bfh338jpmqf43" path="res://scripts/room/Room.cs" id="1_rb6ci"]
 [ext_resource type="PackedScene" uid="uid://ctx0skvdfl87m" path="res://scenes/player.tscn" id="2_qhgoc"]
+[ext_resource type="PackedScene" uid="uid://6ujh86axb3yd" path="res://scenes/HUD.tscn" id="3_ngsr2"]
 
 [node name="Room" type="Node2D" unique_id=1574444025]
 script = ExtResource("1_rb6ci")
@@ -17,6 +18,4 @@ tile_map_data = PackedByteArray("AADk/xIAAQAAAAAAAADl/xIAAQAAAAAAAADm/xIAAQAAAAA
 
 [node name="BackGround" type="TileMapLayer" parent="." unique_id=719215590]
 
-[node name="Camera" type="Camera2D" parent="." unique_id=997556292]
-position = Vector2(-529, -317)
-editor_draw_limits = true
+[node name="Camera" parent="." unique_id=496648991 instance=ExtResource("3_ngsr2")]
