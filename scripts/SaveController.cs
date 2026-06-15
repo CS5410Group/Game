@@ -53,9 +53,7 @@ public partial class SaveController : Node2D
 		using var saveFile = FileAccess.Open("user://playerSave.json", FileAccess.ModeFlags.Write);
 		saveFile.StoreLine("");
 	}
-	// Saves current Player state into playerSave.json by receiving a godot dictionary from player's save() method
-	// and converting it into a json string using Godot.Json library
-	// TODO: Rework this to create a simple checkpoint system for falls
+
 	public void SavePlayer(Node node)
 	{
 		using var saveFile = FileAccess.Open("user://playerSave.json", FileAccess.ModeFlags.Write);
@@ -68,7 +66,8 @@ public partial class SaveController : Node2D
 	}
 
 	// Loads the saved Player state from playerSave.json using godot built-in json library
-	public void LoadPlayer()
+	
+	public void LoadPlayer(bool Override = false, Room Level = null, int loadingZone = 0)
 	{	
 		//rn this is just to clear the current player instance to show saving/loading.
 		// Todo: set up this part of load to reload player states more gracefully.
@@ -96,11 +95,25 @@ public partial class SaveController : Node2D
 
 			var newObjectScene = GD.Load<PackedScene>(nodeData["Filename"].ToString());
 			var newObject = newObjectScene.Instantiate<Node>();
-			
-			var parent = GetTree().Root.GetNode<Room>(nodeData["Parent"].ToString());
+			Node parent;
+			if (Override && Level != null)
+			{
+			parent = Level;
+			}
+			else
+			{	
+			parent = GetTree().Root.GetNode<Room>(nodeData["Parent"].ToString());
+			}
 			parent.GetNode<Player>("Player").QueueFree();
 			parent.AddChild(newObject);
-			newObject.Set(Node2D.PropertyName.Position, new Vector2((float)nodeData["PosX"], (float) nodeData["PosY"]));
+			if (Override)
+			{
+			newObject.Set(Node2D.PropertyName.Position, Level.GetLoadingZone(loadingZone));
+			}
+			else
+			{
+			newObject.Set(Node2D.PropertyName.Position, new Vector2((float)nodeData["PosX"], (float) nodeData["PosY"]));	
+			}
 			newObject.Set(Name, nodeData["Name"]);
 			newObject.Set(Player.PropertyName.hasDoubleJumpPower, nodeData["HasDoubleJump"]);
 			newObject.Set(Player.PropertyName.hasDash, nodeData["HasDash"]);

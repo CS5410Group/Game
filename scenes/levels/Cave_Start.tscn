@@ -196,3 +196,14 @@ sprite = ExtResource("9_e58la")
 position = Vector2(-3776, 1097)
 scale = Vector2(0.25, 0.25)
 sprite = ExtResource("10_7q63k")
+
+[node name="LoadingZones" type="Node" parent="." index="18" unique_id=1877125469]
+
+[node name="Entry" type="Node2D" parent="LoadingZones" index="0" unique_id=298489799]
+position = Vector2(-95, -92)
+
+[node name="Exit" type="Node2D" parent="LoadingZones" index="1" unique_id=962455082]
+position = Vector2(1176, 1007)
+
+[node name="Loading Zone 3" type="Node2D" parent="LoadingZones" index="2" unique_id=311650354]
+position = Vector2(-528, 2022)

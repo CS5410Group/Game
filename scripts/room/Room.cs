@@ -9,7 +9,9 @@ public partial class Room : Node2D
 	TileMapLayer Ground;
 	private SaveController SaveController;
 	
+	private GameManager gm;
 	InteractableContainer SaveContainer;
+
 	//could definitely do this more efficiently with a good refactor, but works for now
 	private Interactable doublejumpInteractable;
 	private Interactable dashInteractable;
@@ -21,6 +23,7 @@ public partial class Room : Node2D
 	float LimitBottom;
 	[Export]
 	Rect2I CameraBounds;
+	Array<Node> LoadingZones;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -37,16 +40,21 @@ public partial class Room : Node2D
 		healInteractable = GetNode<Interactable>("HealInteractable");
 		healInteractable.Interacted += healPlayer;
 		junkInteractable = GetNode<Interactable>("JunkInteractable");
-		junkInteractable.Interacted += () => {junkInteractable.QueueFree();};
-		int tileSize = (int)Ground.TileSet.TileSize.X;
+		GameManager gm = GetTree().Root.GetNode<GameManager>("GameManager");
 
+		junkInteractable.Interacted += () => {if(this.Name == "Level2") {gm.LoadCave();} else{gm.LoadLevel2();}};
+		int tileSize = (int)Ground.TileSet.TileSize.X;
+		LoadingZones = GetNode<Node>("LoadingZones").GetChildren();
 		LimitLeft = CameraBounds.Position.X * tileSize;
 		LimitTop = CameraBounds.Position.Y * tileSize;
 		LimitRight = CameraBounds.End.X * tileSize;
 		LimitBottom = CameraBounds.End.Y * tileSize;
 		loadPlayer();
 	}
-
+	public Vector2 GetLoadingZone(int loadingZoneIndex)
+	{
+		return ((Node2D)LoadingZones[loadingZoneIndex]).Position;
+	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
@@ -67,7 +75,7 @@ public partial class Room : Node2D
 	}
 	public void loadPlayer()
 	{
-			SaveController.LoadPlayer();
+			SaveController.LoadPlayer(true, this, 2);
 			Player = GetNode<Player>("Player");
 			foreach(Node child in (Godot.Collections.Array) GetChildren())
 			{
